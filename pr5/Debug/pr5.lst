@@ -1,0 +1,695 @@
+
+pr5.elf:     file format elf32-littleriscv
+pr5.elf
+architecture: riscv:rv32, flags 0x00000112:
+EXEC_P, HAS_SYMS, D_PAGED
+start address 0x0000024c
+
+Program Header:
+    LOAD off    0x00001000 vaddr 0x00000000 paddr 0x00000000 align 2**12
+         filesz 0x000002f8 memsz 0x000002f8 flags r-x
+    LOAD off    0x00002000 vaddr 0x00010000 paddr 0x00010000 align 2**12
+         filesz 0x00000028 memsz 0x00000028 flags r--
+
+Sections:
+Idx Name              Size      VMA       LMA       File off  Algn  Flags
+  0 .text             0000024c  00000000  00000000  00001000  2**2  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .text.main        000000ac  0000024c  0000024c  0000124c  2**2  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .rodata           00000028  00010000  00010000  00002000  2**2  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  3 .riscv.attributes 00000021  00000000  00000000  00002028  2**0  CONTENTS, READONLY
+  4 .comment          00000012  00000000  00000000  00002049  2**0  CONTENTS, READONLY
+  5 .debug_line       00000739  00000000  00000000  0000205b  2**0  CONTENTS, READONLY, DEBUGGING, OCTETS
+  6 .debug_info       0000010f  00000000  00000000  00002794  2**0  CONTENTS, READONLY, DEBUGGING, OCTETS
+  7 .debug_abbrev     000000a3  00000000  00000000  000028a3  2**0  CONTENTS, READONLY, DEBUGGING, OCTETS
+  8 .debug_aranges    00000060  00000000  00000000  00002948  2**3  CONTENTS, READONLY, DEBUGGING, OCTETS
+  9 .debug_str        000061f6  00000000  00000000  000029a8  2**0  CONTENTS, READONLY, DEBUGGING, OCTETS
+ 10 .debug_ranges     00000010  00000000  00000000  00008b9e  2**0  CONTENTS, READONLY, DEBUGGING, OCTETS
+ 11 .debug_macro      0000168d  00000000  00000000  00008bae  2**0  CONTENTS, READONLY, DEBUGGING, OCTETS
+ 12 .debug_frame      00000038  00000000  00000000  0000a23c  2**2  CONTENTS, READONLY, DEBUGGING, OCTETS
+SYMBOL TABLE:
+00000000 l    d  .text	00000000 .text
+0000024c l    d  .text.main	00000000 .text.main
+00010000 l    d  .rodata	00000000 .rodata
+00000000 l    d  .riscv.attributes	00000000 .riscv.attributes
+00000000 l    d  .comment	00000000 .comment
+00000000 l    d  .debug_line	00000000 .debug_line
+00000000 l    d  .debug_info	00000000 .debug_info
+00000000 l    d  .debug_abbrev	00000000 .debug_abbrev
+00000000 l    d  .debug_aranges	00000000 .debug_aranges
+00000000 l    d  .debug_str	00000000 .debug_str
+00000000 l    d  .debug_ranges	00000000 .debug_ranges
+00000000 l    d  .debug_macro	00000000 .debug_macro
+00000000 l    d  .debug_frame	00000000 .debug_frame
+00000000 l    df *ABS*	00000000 ./fun_asm.o
+0000003c l       .text	00000000 while
+000000ec l       .text	00000000 end_while
+00000048 l       .text	00000000 inner_for
+0000008c l       .text	00000000 end_inner_for
+00000074 l       .text	00000000 inner_for_if
+000000a0 l       .text	00000000 inner_for2
+000000e4 l       .text	00000000 end_inner_for2
+000000cc l       .text	00000000 inner_for2_if
+00000000 l    df *ABS*	00000000 ./fun_asm2.o
+0000015c l       .text	00000000 for
+00000188 l       .text	00000000 end_for
+00000178 l       .text	00000000 for_if
+000001a0 l       .text	00000000 if
+000001b8 l       .text	00000000 end
+000001e0 l       .text	00000000 square_array
+00000204 l       .text	00000000 square_array_for
+00000228 l       .text	00000000 end_square_array
+00000244 l       .text	00000000 mul
+00000000 l    df *ABS*	00000000 pr5.c
+00000118 g       .text	00000000 sortRecursive
+00000000 g       .text	00000000 cocktailSort
+0000024c g     F .text.main	000000ac main
+00020000 g       *ABS*	00000000 _stack
+
+
+
+Disassembly of section .text:
+
+00000000 <cocktailSort>:
+cocktailSort():
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:61
+.global cocktailSort
+.extern _stack
+
+cocktailSort:
+	#prologue
+ 	addi sp,sp,-36
+   0:	fdc10113          	addi	sp,sp,-36
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:62
+	sw s1,0(sp)
+   4:	00912023          	sw	s1,0(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:63
+ 	sw s2,4(sp)
+   8:	01212223          	sw	s2,4(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:64
+ 	sw s3,8(sp)
+   c:	01312423          	sw	s3,8(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:65
+ 	sw s4,12(sp)
+  10:	01412623          	sw	s4,12(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:66
+ 	sw s5,16(sp)
+  14:	01512823          	sw	s5,16(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:67
+ 	sw s6,20(sp)
+  18:	01612a23          	sw	s6,20(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:68
+ 	sw s7,24(sp)
+  1c:	01712c23          	sw	s7,24(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:69
+ 	sw s8,28(sp)
+  20:	01812e23          	sw	s8,28(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:70
+ 	sw ra,32(sp)
+  24:	02112023          	sw	ra,32(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:72
+
+ 	mv s1, a0      //arr[] in s1
+  28:	00050493          	mv	s1,a0
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:73
+ 	mv s2, a1      //size in s2
+  2c:	00058913          	mv	s2,a1
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:74
+ 	li s3, 1       //changed = true
+  30:	00100993          	li	s3,1
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:75
+ 	li s4, 0       //start = 0
+  34:	00000a13          	li	s4,0
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:76
+ 	addi s5, s2, -1//s5 = end = size-1
+  38:	fff90a93          	addi	s5,s2,-1
+
+0000003c <while>:
+while():
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:78
+ while:
+ 	beqz s3, end_while //if changed = false, end_while
+  3c:	0a098863          	beqz	s3,ec <end_while>
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:79
+ 	addi s3, s3, -1   //goes from true to false
+  40:	fff98993          	addi	s3,s3,-1
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:80
+ 	mv s6, s4         //i = start
+  44:	000a0b13          	mv	s6,s4
+
+00000048 <inner_for>:
+inner_for():
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:82
+ inner_for:
+ 	bge s6, s5, end_inner_for //if i>= to end, goes to end_inner_for
+  48:	055b5263          	bge	s6,s5,8c <end_inner_for>
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:83
+ 	slli t1, s6, 2            //i*4
+  4c:	002b1313          	slli	t1,s6,0x2
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:84
+ 	addi t2, s6, 1            //i + 1
+  50:	001b0393          	addi	t2,s6,1
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:85
+ 	slli t2, t2, 2            //(i+ 1)*4
+  54:	00239393          	slli	t2,t2,0x2
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:86
+ 	add s7, s1, t1            //s7 has the address of arr[i]
+  58:	00648bb3          	add	s7,s1,t1
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:87
+ 	add s8, s1, t2            //s8 has the address of arr[i+1]
+  5c:	00748c33          	add	s8,s1,t2
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:88
+ 	lw t3,0(s7)               //value of arr[i] in t3
+  60:	000bae03          	lw	t3,0(s7)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:89
+ 	lw t4,0(s8)               //value if arr[i+1] in t4
+  64:	000c2e83          	lw	t4,0(s8)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:90
+ 	blt t4, t3, inner_for_if  //if arr[i+1] < arr[i] then go to inner_for_if
+  68:	01cec663          	blt	t4,t3,74 <inner_for_if>
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:91
+ 	addi s6, s6, 1            //i++
+  6c:	001b0b13          	addi	s6,s6,1
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:92
+ 	j inner_for
+  70:	fd9ff06f          	j	48 <inner_for>
+
+00000074 <inner_for_if>:
+inner_for_if():
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:95
+
+ inner_for_if:
+ 	mv t5, t3                 //t5=tmp=arr[i]
+  74:	000e0f13          	mv	t5,t3
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:96
+ 	sw t4, 0(s7)              //save value of arr[i+1] on address of arr[1]
+  78:	01dba023          	sw	t4,0(s7)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:97
+ 	sw t5, 0(s8)              //save value tmp on adrees of arr[i+1]
+  7c:	01ec2023          	sw	t5,0(s8)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:98
+ 	addi s3, s3, 1            //changed = true
+  80:	00198993          	addi	s3,s3,1
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:99
+ 	addi s6, s6, 1            //i++
+  84:	001b0b13          	addi	s6,s6,1
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:100
+ 	j inner_for
+  88:	fc1ff06f          	j	48 <inner_for>
+
+0000008c <end_inner_for>:
+end_inner_for():
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:103
+
+ end_inner_for:
+ 	addi s5, s5, -1           //end--
+  8c:	fffa8a93          	addi	s5,s5,-1
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:104
+ 	beqz s3, end_while         //if changed== false, then break
+  90:	04098e63          	beqz	s3,ec <end_while>
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:105
+ 	addi s3, s3, -1           //changed = false
+  94:	fff98993          	addi	s3,s3,-1
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:106
+ 	mv s6, s5                 //i = end
+  98:	000a8b13          	mv	s6,s5
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:107
+ 	addi s6, s6, -1           //i = end -1
+  9c:	fffb0b13          	addi	s6,s6,-1
+
+000000a0 <inner_for2>:
+inner_for2():
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:110
+
+ inner_for2:
+	blt s6, s4, end_inner_for2 //if i < start, the go to end_inner_for2
+  a0:	054b4263          	blt	s6,s4,e4 <end_inner_for2>
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:111
+	slli t1, s6, 2            //i*4
+  a4:	002b1313          	slli	t1,s6,0x2
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:112
+ 	addi t2, s6, 1            //i + 1
+  a8:	001b0393          	addi	t2,s6,1
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:113
+ 	slli t2, t2, 2            //(i+ 1)*4
+  ac:	00239393          	slli	t2,t2,0x2
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:114
+ 	add s7, s1, t1            //s7 has the address of arr[i]
+  b0:	00648bb3          	add	s7,s1,t1
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:115
+ 	add s8, s1, t2            //s8 has the address of arr[i+1]
+  b4:	00748c33          	add	s8,s1,t2
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:116
+ 	lw t3,0(s7)               //value of arr[i] in t3
+  b8:	000bae03          	lw	t3,0(s7)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:117
+ 	lw t4,0(s8)               //value if arr[i+1] in t4
+  bc:	000c2e83          	lw	t4,0(s8)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:118
+ 	blt t4, t3, inner_for2_if  //if arr[i+1] < arr[i] then go to inner_for_if
+  c0:	01cec663          	blt	t4,t3,cc <inner_for2_if>
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:119
+ 	addi s6, s6, -1            //i--
+  c4:	fffb0b13          	addi	s6,s6,-1
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:120
+ 	j inner_for2
+  c8:	fd9ff06f          	j	a0 <inner_for2>
+
+000000cc <inner_for2_if>:
+inner_for2_if():
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:123
+
+inner_for2_if:
+	mv t5, t4                 //t5=tmp=arr[i+1]
+  cc:	000e8f13          	mv	t5,t4
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:124
+ 	sw t3, 0(s8)              //save value of arr[i] on address of arr[1+1]
+  d0:	01cc2023          	sw	t3,0(s8)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:125
+ 	sw t5, 0(s7)              //save value tmp on adrees of arr[i]
+  d4:	01eba023          	sw	t5,0(s7)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:126
+ 	addi s3, s3, 1            //changed = true
+  d8:	00198993          	addi	s3,s3,1
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:127
+ 	addi s6, s6, -1           //i--
+  dc:	fffb0b13          	addi	s6,s6,-1
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:128
+ 	j inner_for2
+  e0:	fc1ff06f          	j	a0 <inner_for2>
+
+000000e4 <end_inner_for2>:
+end_inner_for2():
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:131
+
+end_inner_for2:
+	addi s4, s4, 1            //start++
+  e4:	001a0a13          	addi	s4,s4,1
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:132
+	j while
+  e8:	f55ff06f          	j	3c <while>
+
+000000ec <end_while>:
+end_while():
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:136
+
+ end_while:
+	#epilogue
+	lw s1,0(sp)
+  ec:	00012483          	lw	s1,0(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:137
+ 	lw s2,4(sp)
+  f0:	00412903          	lw	s2,4(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:138
+ 	lw s3,8(sp)
+  f4:	00812983          	lw	s3,8(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:139
+ 	lw s4,12(sp)
+  f8:	00c12a03          	lw	s4,12(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:140
+ 	lw s5,16(sp)
+  fc:	01012a83          	lw	s5,16(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:141
+ 	lw s6,20(sp)
+ 100:	01412b03          	lw	s6,20(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:142
+ 	lw s7,24(sp)
+ 104:	01812b83          	lw	s7,24(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:143
+ 	lw s8,28(sp)
+ 108:	01c12c03          	lw	s8,28(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:144
+ 	lw ra,32(sp)
+ 10c:	02012083          	lw	ra,32(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:145
+ 	addi sp,sp,36
+ 110:	02410113          	addi	sp,sp,36
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm.asm:146
+ 	ret
+ 114:	00008067          	ret
+
+00000118 <sortRecursive>:
+sortRecursive():
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:39
+.global sortRecursive
+.extern _stack
+
+sortRecursive:
+	#prologue
+ 	addi sp,sp,-32
+ 118:	fe010113          	addi	sp,sp,-32
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:40
+	sw s1,0(sp)
+ 11c:	00912023          	sw	s1,0(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:41
+ 	sw s2,4(sp)
+ 120:	01212223          	sw	s2,4(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:42
+ 	sw s3,8(sp)
+ 124:	01312423          	sw	s3,8(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:43
+ 	sw s4,12(sp)
+ 128:	01412623          	sw	s4,12(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:44
+ 	sw s5,16(sp)
+ 12c:	01512823          	sw	s5,16(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:45
+ 	sw s6,20(sp)
+ 130:	01612a23          	sw	s6,20(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:46
+ 	sw s7,24(sp)
+ 134:	01712c23          	sw	s7,24(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:47
+ 	sw ra,28(sp)
+ 138:	00112e23          	sw	ra,28(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:49
+
+ 	mv s1, a0                 //arr[] in s1
+ 13c:	00050493          	mv	s1,a0
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:50
+ 	mv s2, a1                 //start in s2
+ 140:	00058913          	mv	s2,a1
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:51
+ 	mv s3, a2                 //size in s3
+ 144:	00060993          	mv	s3,a2
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:52
+ 	addi s4, s2, 1             //start + 1 = i in s4
+ 148:	00190a13          	addi	s4,s2,1
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:53
+ 	slli t1, s2, 2            //start*4
+ 14c:	00291313          	slli	t1,s2,0x2
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:54
+ 	add s5, s1, t1            // address of arr[start] in s5
+ 150:	00648ab3          	add	s5,s1,t1
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:55
+ 	lw s6,0(s5)               //value of arr[start] = min in s6
+ 154:	000aab03          	lw	s6,0(s5)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:56
+ 	mv s7, s2                 // index in s7
+ 158:	00090b93          	mv	s7,s2
+
+0000015c <for>:
+for():
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:58
+ for:
+ 	bge s4, s3, end_for       //if i>= to size, goes to end_for
+ 15c:	033a5663          	bge	s4,s3,188 <end_for>
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:59
+ 	slli t1, s4, 2            //i*4 in t1
+ 160:	002a1313          	slli	t1,s4,0x2
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:60
+ 	add s8, s1, t1            //s8 has the address of arr[i]
+ 164:	00648c33          	add	s8,s1,t1
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:61
+ 	lw t3,0(s8)               //value of arr[i] in t3
+ 168:	000c2e03          	lw	t3,0(s8)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:62
+ 	blt t3, s6, for_if        //if arr[i] < min then go to for_if
+ 16c:	016e4663          	blt	t3,s6,178 <for_if>
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:63
+ 	addi s4, s4, 1            //i++
+ 170:	001a0a13          	addi	s4,s4,1
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:64
+ 	j for
+ 174:	fe9ff06f          	j	15c <for>
+
+00000178 <for_if>:
+for_if():
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:67
+
+ for_if:
+ 	mv s6, t3                 //min = arr[i]
+ 178:	000e0b13          	mv	s6,t3
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:68
+ 	mv s7, s4                 //index = i
+ 17c:	000a0b93          	mv	s7,s4
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:69
+ 	addi s4, s4, 1            //i++
+ 180:	001a0a13          	addi	s4,s4,1
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:70
+ 	j for
+ 184:	fd9ff06f          	j	15c <for>
+
+00000188 <end_for>:
+end_for():
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:73
+
+ end_for:
+ 	ble s7, s2, if            //if index <= start, then if
+ 188:	01795c63          	bge	s2,s7,1a0 <if>
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:74
+ 	lw t6,0(s5)               //value of tmp = arr[start]  in t6
+ 18c:	000aaf83          	lw	t6,0(s5)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:75
+ 	sw s6, 0(s5)              //arr[start] = min = arr[index]
+ 190:	016aa023          	sw	s6,0(s5)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:76
+ 	slli t1, s7, 2            //index * 4
+ 194:	002b9313          	slli	t1,s7,0x2
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:77
+ 	add t2, s1, t1            //adress of arr[index] in t2
+ 198:	006483b3          	add	t2,s1,t1
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:78
+ 	sw t6, 0(t2)              // arr[index] = tmp
+ 19c:	01f3a023          	sw	t6,0(t2)
+
+000001a0 <if>:
+if():
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:80
+if:
+	addi s2, s2, 1           //start++
+ 1a0:	00190913          	addi	s2,s2,1
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:81
+	sub t2, s3, s2           //in t2 = size - start
+ 1a4:	412983b3          	sub	t2,s3,s2
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:82
+	li t3, 1                 // t3 = 1
+ 1a8:	00100e13          	li	t3,1
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:83
+	ble t2, t3, end
+ 1ac:	007e5663          	bge	t3,t2,1b8 <end>
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:84
+	mv a2, s2
+ 1b0:	00090613          	mv	a2,s2
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:85
+	call sortRecursive
+ 1b4:	f65ff0ef          	jal	ra,118 <sortRecursive>
+
+000001b8 <end>:
+end():
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:89
+
+ end:
+	#epilogue
+	lw s1,0(sp)
+ 1b8:	00012483          	lw	s1,0(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:90
+ 	lw s2,4(sp)
+ 1bc:	00412903          	lw	s2,4(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:91
+ 	lw s3,8(sp)
+ 1c0:	00812983          	lw	s3,8(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:92
+ 	lw s4,12(sp)
+ 1c4:	00c12a03          	lw	s4,12(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:93
+ 	lw s5,16(sp)
+ 1c8:	01012a83          	lw	s5,16(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:94
+ 	lw s6,20(sp)
+ 1cc:	01412b03          	lw	s6,20(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:95
+ 	lw s7,24(sp)
+ 1d0:	01812b83          	lw	s7,24(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:96
+ 	lw ra,28(sp)
+ 1d4:	01c12083          	lw	ra,28(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:97
+ 	addi sp,sp,32
+ 1d8:	02010113          	addi	sp,sp,32
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:98
+ 	ret
+ 1dc:	00008067          	ret
+
+000001e0 <square_array>:
+square_array():
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:102
+
+ square_array://void square_array(arr[], size)
+ #prologue
+ 	addi sp,sp,-20
+ 1e0:	fec10113          	addi	sp,sp,-20
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:103
+	sw s1,0(sp)
+ 1e4:	00912023          	sw	s1,0(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:104
+ 	sw s2,4(sp)
+ 1e8:	01212223          	sw	s2,4(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:105
+ 	sw s3,8(sp)
+ 1ec:	01312423          	sw	s3,8(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:106
+ 	sw s4,12(sp)
+ 1f0:	01412623          	sw	s4,12(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:107
+ 	lw ra,16(sp)
+ 1f4:	01012083          	lw	ra,16(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:108
+ 	mv s1, a0      //arr[] in s1
+ 1f8:	00050493          	mv	s1,a0
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:109
+ 	mv s2, a1      //size in s2
+ 1fc:	00058913          	mv	s2,a1
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:110
+ 	li s3, 0       //int i= 0, s3
+ 200:	00000993          	li	s3,0
+
+00000204 <square_array_for>:
+square_array_for():
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:113
+
+ square_array_for:
+ 	beq s2, s3, end_square_array //if i == size, for loop ends
+ 204:	03390263          	beq	s2,s3,228 <end_square_array>
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:114
+ 	slli t1, s3, 2               //i*4
+ 208:	00299313          	slli	t1,s3,0x2
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:115
+ 	add s4, s1, t1               //address of arr[i] in s4
+ 20c:	00648a33          	add	s4,s1,t1
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:116
+ 	lw a0,0(s4)                  //value of arr[i] in a0
+ 210:	000a2503          	lw	a0,0(s4)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:117
+ 	lw a1,0(s4)                  //value of arr[i] in a1
+ 214:	000a2583          	lw	a1,0(s4)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:118
+ 	call mul                     //mul(arr[i], arr[i])
+ 218:	02c000ef          	jal	ra,244 <mul>
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:119
+ 	sw a0, 0(s4)                 //saving the squared value in the array
+ 21c:	00aa2023          	sw	a0,0(s4)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:120
+ 	addi s3, s3, 1               //i++
+ 220:	00198993          	addi	s3,s3,1
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:121
+ 	j square_array_for
+ 224:	fe1ff06f          	j	204 <square_array_for>
+
+00000228 <end_square_array>:
+end_square_array():
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:125
+
+ end_square_array:
+	#epilogue
+	lw s1,0(sp)
+ 228:	00012483          	lw	s1,0(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:126
+ 	lw s2,4(sp)
+ 22c:	00412903          	lw	s2,4(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:127
+ 	lw s3,8(sp)
+ 230:	00812983          	lw	s3,8(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:128
+ 	lw s4,12(sp)
+ 234:	00c12a03          	lw	s4,12(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:129
+ 	lw ra,16(sp)
+ 238:	01012083          	lw	ra,16(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:130
+ 	addi sp,sp,20
+ 23c:	01410113          	addi	sp,sp,20
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:131
+ 	ret
+ 240:	00008067          	ret
+
+00000244 <mul>:
+mul():
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:134
+
+ mul:
+ 	mul a0, a0, a1
+ 244:	02b50533          	mul	a0,a0,a1
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../fun_asm2.asm:135
+ 	ret
+ 248:	00008067          	ret
+
+Disassembly of section .text.main:
+
+0000024c <main>:
+main():
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../pr5.c:24
+extern void cocktailSort(int arr[], int size);
+extern void sortRecursive(int arr[], int start, int size);
+
+#define N 5
+int main()
+{
+ 24c:	fc010113          	addi	sp,sp,-64
+ 250:	02112e23          	sw	ra,60(sp)
+ 254:	02812c23          	sw	s0,56(sp)
+ 258:	04010413          	addi	s0,sp,64
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../pr5.c:29
+    //int i;
+
+    //printf("Enter the size of the array: ");
+    //scanf("%d", &n);
+    int arr[N] = {5, 2, -3, 7, 6};
+ 25c:	000107b7          	lui	a5,0x10
+ 260:	00078793          	mv	a5,a5
+ 264:	0007a583          	lw	a1,0(a5) # 10000 <main+0xfdb4>
+ 268:	0047a603          	lw	a2,4(a5)
+ 26c:	0087a683          	lw	a3,8(a5)
+ 270:	00c7a703          	lw	a4,12(a5)
+ 274:	0107a783          	lw	a5,16(a5)
+ 278:	fcb42e23          	sw	a1,-36(s0)
+ 27c:	fec42023          	sw	a2,-32(s0)
+ 280:	fed42223          	sw	a3,-28(s0)
+ 284:	fee42423          	sw	a4,-24(s0)
+ 288:	fef42623          	sw	a5,-20(s0)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../pr5.c:42
+    printf("You entered:  ");
+    for (i = 0; i < n; i++)
+    {
+        printf("%d ", arr[i]);
+    }*/
+    sortRecursive(arr, 0, N);
+ 28c:	fdc40793          	addi	a5,s0,-36
+ 290:	00500613          	li	a2,5
+ 294:	00000593          	li	a1,0
+ 298:	00078513          	mv	a0,a5
+ 29c:	e7dff0ef          	jal	ra,118 <sortRecursive>
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../pr5.c:43
+    int arra[N] = {7, 6, 5, 2, -1};
+ 2a0:	000107b7          	lui	a5,0x10
+ 2a4:	01478793          	addi	a5,a5,20 # 10014 <main+0xfdc8>
+ 2a8:	0007a583          	lw	a1,0(a5)
+ 2ac:	0047a603          	lw	a2,4(a5)
+ 2b0:	0087a683          	lw	a3,8(a5)
+ 2b4:	00c7a703          	lw	a4,12(a5)
+ 2b8:	0107a783          	lw	a5,16(a5)
+ 2bc:	fcb42423          	sw	a1,-56(s0)
+ 2c0:	fcc42623          	sw	a2,-52(s0)
+ 2c4:	fcd42823          	sw	a3,-48(s0)
+ 2c8:	fce42a23          	sw	a4,-44(s0)
+ 2cc:	fcf42c23          	sw	a5,-40(s0)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../pr5.c:44
+    cocktailSort(arra, N);
+ 2d0:	fc840793          	addi	a5,s0,-56
+ 2d4:	00500593          	li	a1,5
+ 2d8:	00078513          	mv	a0,a5
+ 2dc:	d25ff0ef          	jal	ra,0 <cocktailSort>
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../pr5.c:55
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+
+    free(arr);*/
+    return 0;
+ 2e0:	00000793          	li	a5,0
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr5\Debug/../pr5.c:56
+}
+ 2e4:	00078513          	mv	a0,a5
+ 2e8:	03c12083          	lw	ra,60(sp)
+ 2ec:	03812403          	lw	s0,56(sp)
+ 2f0:	04010113          	addi	sp,sp,64
+ 2f4:	00008067          	ret

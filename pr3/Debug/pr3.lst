@@ -1,0 +1,383 @@
+
+pr3.elf:     file format elf32-littleriscv
+pr3.elf
+architecture: riscv:rv32, flags 0x00000112:
+EXEC_P, HAS_SYMS, D_PAGED
+start address 0x00000000
+
+Program Header:
+    LOAD off    0x00001000 vaddr 0x00000000 paddr 0x00000000 align 2**12
+         filesz 0x0000017c memsz 0x0000017c flags r-x
+    LOAD off    0x00002000 vaddr 0x00010000 paddr 0x00010000 align 2**12
+         filesz 0x00000020 memsz 0x0000002c flags rw-
+
+Sections:
+Idx Name              Size      VMA       LMA       File off  Algn  Flags
+  0 .text             0000017c  00000000  00000000  00001000  2**2  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data             00000020  00010000  00010000  00002000  2**0  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss              0000000c  00010020  00010020  00002020  2**0  ALLOC
+  3 .riscv.attributes 0000001f  00000000  00000000  00002020  2**0  CONTENTS, READONLY
+  4 .debug_line       00000239  00000000  00000000  0000203f  2**0  CONTENTS, READONLY, DEBUGGING, OCTETS
+  5 .debug_info       00000026  00000000  00000000  00002278  2**0  CONTENTS, READONLY, DEBUGGING, OCTETS
+  6 .debug_abbrev     00000014  00000000  00000000  0000229e  2**0  CONTENTS, READONLY, DEBUGGING, OCTETS
+  7 .debug_aranges    00000020  00000000  00000000  000022b8  2**3  CONTENTS, READONLY, DEBUGGING, OCTETS
+  8 .debug_str        00000045  00000000  00000000  000022d8  2**0  CONTENTS, READONLY, DEBUGGING, OCTETS
+SYMBOL TABLE:
+00000000 l    d  .text	00000000 .text
+00010000 l    d  .data	00000000 .data
+00010020 l    d  .bss	00000000 .bss
+00000000 l    d  .riscv.attributes	00000000 .riscv.attributes
+00000000 l    d  .debug_line	00000000 .debug_line
+00000000 l    d  .debug_info	00000000 .debug_info
+00000000 l    d  .debug_abbrev	00000000 .debug_abbrev
+00000000 l    d  .debug_aranges	00000000 .debug_aranges
+00000000 l    d  .debug_str	00000000 .debug_str
+00000000 l    df *ABS*	00000000 ./pr3.o
+00000004 l       *ABS*	00000000 N
+00010000 l       .data	00000000 A
+00010010 l       .data	00000000 B
+00010020 l       .bss	00000000 res
+00010024 l       .bss	00000000 normA
+00010028 l       .bss	00000000 normB
+000000dc l       .text	00000000 DOTPROD
+0000006c l       .text	00000000 else
+00000080 l       .text	00000000 END
+00000084 l       .text	00000000 MUL
+000000ac l       .text	00000000 MULFOR
+000000bc l       .text	00000000 ENDFORMUL
+00000118 l       .text	00000000 DOTFOR
+0000014c l       .text	00000000 FIN_DOTFOR
+00000000 g       .text	00000000 main
+00020000 g       *ABS*	00000000 _stack
+
+
+
+Disassembly of section .text:
+
+00000000 <main>:
+main():
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:63
+  normA: .space 4
+  normB: .space 4
+
+ .text
+ main:
+    la sp,_stack
+   0:	00020117          	auipc	sp,0x20
+   4:	00010113          	mv	sp,sp
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:64
+	la a0, A            //loading address of A in a0
+   8:	00010517          	auipc	a0,0x10
+   c:	ff850513          	addi	a0,a0,-8 # 10000 <A>
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:65
+	la a1, A            //loading address of A in a1
+  10:	00010597          	auipc	a1,0x10
+  14:	ff058593          	addi	a1,a1,-16 # 10000 <A>
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:66
+	li a2, N            //loading N into a2
+  18:	00400613          	li	a2,4
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:67
+	call DOTPROD        //dotprod(A[],A[],N)
+  1c:	0c0000ef          	jal	ra,dc <DOTPROD>
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:68
+	la t1,normA         //loading address of mormA in t1
+  20:	00010317          	auipc	t1,0x10
+  24:	00430313          	addi	t1,t1,4 # 10024 <normA>
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:69
+ 	sw a0,0(t1)         //normA = dotprod(A[],A[],N)
+  28:	00a32023          	sw	a0,0(t1)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:70
+	la a0, B            //loading address of B in a0
+  2c:	00010517          	auipc	a0,0x10
+  30:	fe450513          	addi	a0,a0,-28 # 10010 <B>
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:71
+	la a1, B            //loading address of B in a1
+  34:	00010597          	auipc	a1,0x10
+  38:	fdc58593          	addi	a1,a1,-36 # 10010 <B>
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:72
+	call DOTPROD        //dotprod(B[],B[],N)
+  3c:	0a0000ef          	jal	ra,dc <DOTPROD>
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:73
+	la t2,normB         //loading address of mormB in t2
+  40:	00010397          	auipc	t2,0x10
+  44:	fe838393          	addi	t2,t2,-24 # 10028 <normB>
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:74
+ 	sw a0,0(t2)         //normB = dotprod(B[],B[],N)
+  48:	00a3a023          	sw	a0,0(t2)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:75
+ 	lw s1, 0(t1)
+  4c:	00032483          	lw	s1,0(t1)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:76
+ 	lw s2, 0(t2)
+  50:	0003a903          	lw	s2,0(t2)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:77
+	bge s2, s1, else    //if normB >= normA go to else
+  54:	00995c63          	bge	s2,s1,6c <else>
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:78
+	la s3, res          //loading address of res
+  58:	00010997          	auipc	s3,0x10
+  5c:	fc898993          	addi	s3,s3,-56 # 10020 <res>
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:79
+	li s1, 0xa          //loading the inmidiate 0xa
+  60:	00a00493          	li	s1,10
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:80
+	sw s1, 0(s3)        //saving 0xa in res
+  64:	0099a023          	sw	s1,0(s3)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:81
+	j END
+  68:	0180006f          	j	80 <END>
+
+0000006c <else>:
+else():
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:84
+
+else:
+	la s3, res          //loading address of res
+  6c:	00010997          	auipc	s3,0x10
+  70:	fb498993          	addi	s3,s3,-76 # 10020 <res>
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:85
+	li s2, 0xb          //loading the inmidiate 0xb
+  74:	00b00913          	li	s2,11
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:86
+	sw s2, 0(s3)        //saving 0xb in res
+  78:	0129a023          	sw	s2,0(s3)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:87
+	j END
+  7c:	0040006f          	j	80 <END>
+
+00000080 <END>:
+END():
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:90
+
+END:
+   j END
+  80:	0000006f          	j	80 <END>
+
+00000084 <MUL>:
+MUL():
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:98
+
+
+
+MUL:
+	 #prologue
+ 	addi sp,sp,-20
+  84:	fec10113          	addi	sp,sp,-20 # 1ffec <normB+0xffc4>
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:99
+	sw s1,0(sp)
+  88:	00912023          	sw	s1,0(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:100
+ 	sw s2,4(sp)
+  8c:	01212223          	sw	s2,4(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:101
+ 	sw s3,8(sp)
+  90:	01312423          	sw	s3,8(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:102
+ 	sw s4,12(sp)
+  94:	01412623          	sw	s4,12(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:103
+ 	sw ra,16(sp)
+  98:	00112823          	sw	ra,16(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:106
+
+ 	# body
+ 	mv s1,zero //res in s1
+  9c:	00000493          	li	s1,0
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:107
+	mv s2,a0   //a in s2
+  a0:	00050913          	mv	s2,a0
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:108
+	mv s3,a1   //b in s3
+  a4:	00058993          	mv	s3,a1
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:109
+	mv s4,zero //0 in s4
+  a8:	00000a13          	li	s4,0
+
+000000ac <MULFOR>:
+MULFOR():
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:112
+
+MULFOR:
+	beq s3, s4, ENDFORMUL // if b== 0, then go to end loop
+  ac:	01498863          	beq	s3,s4,bc <ENDFORMUL>
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:113
+	add s1, s1, s2        // res+= a
+  b0:	012484b3          	add	s1,s1,s2
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:114
+	addi s3, s3, -1       //b--
+  b4:	fff98993          	addi	s3,s3,-1
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:115
+	j MULFOR
+  b8:	ff5ff06f          	j	ac <MULFOR>
+
+000000bc <ENDFORMUL>:
+ENDFORMUL():
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:118
+
+ENDFORMUL:
+	 mv a0,s1      //return res;
+  bc:	00048513          	mv	a0,s1
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:120
+	 #epilogue
+ 	lw s1,0(sp)
+  c0:	00012483          	lw	s1,0(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:121
+ 	lw s2,4(sp)
+  c4:	00412903          	lw	s2,4(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:122
+ 	lw s3,8(sp)
+  c8:	00812983          	lw	s3,8(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:123
+ 	lw s4,12(sp)
+  cc:	00c12a03          	lw	s4,12(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:124
+ 	lw ra,16(sp)
+  d0:	01012083          	lw	ra,16(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:125
+ 	addi sp,sp,20
+  d4:	01410113          	addi	sp,sp,20
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:126
+ 	ret
+  d8:	00008067          	ret
+
+000000dc <DOTPROD>:
+DOTPROD():
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:131
+
+ DOTPROD:
+
+ #prologue
+ 	addi sp,sp,-36
+  dc:	fdc10113          	addi	sp,sp,-36
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:132
+	sw s1,0(sp)
+  e0:	00912023          	sw	s1,0(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:133
+ 	sw s2,4(sp)
+  e4:	01212223          	sw	s2,4(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:134
+ 	sw s3,8(sp)
+  e8:	01312423          	sw	s3,8(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:135
+ 	sw s4,12(sp)
+  ec:	01412623          	sw	s4,12(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:136
+ 	sw s5,16(sp)
+  f0:	01512823          	sw	s5,16(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:137
+ 	sw s6,20(sp)
+  f4:	01612a23          	sw	s6,20(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:138
+ 	sw s7,24(sp)
+  f8:	01712c23          	sw	s7,24(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:139
+ 	sw s8,28(sp)
+  fc:	01812e23          	sw	s8,28(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:140
+ 	sw ra,32(sp)
+ 100:	02112023          	sw	ra,32(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:144
+
+
+ #body
+ mv s8,a0     //v base in s8
+ 104:	00050c13          	mv	s8,a0
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:145
+ mv s1,a1     //w base in s1
+ 108:	00058493          	mv	s1,a1
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:146
+ mv s2,a2     //n in s2
+ 10c:	00060913          	mv	s2,a2
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:147
+ mv s3,zero   //acc in s3
+ 110:	00000993          	li	s3,0
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:148
+ mv s4,zero    //i in s4
+ 114:	00000a13          	li	s4,0
+
+00000118 <DOTFOR>:
+DOTFOR():
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:151
+
+ DOTFOR:
+ bge s4,s2,FIN_DOTFOR
+ 118:	032a5a63          	bge	s4,s2,14c <FIN_DOTFOR>
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:152
+ slli s5,s4,2
+ 11c:	002a1a93          	slli	s5,s4,0x2
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:153
+ add s5,s5,s1
+ 120:	009a8ab3          	add	s5,s5,s1
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:154
+ lw s7,0(s5)    //W[i] in s8
+ 124:	000aab83          	lw	s7,0(s5)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:155
+ slli s5,s4,2
+ 128:	002a1a93          	slli	s5,s4,0x2
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:156
+ add s5,s8,s5
+ 12c:	015c0ab3          	add	s5,s8,s5
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:157
+ lw s6,0(s5)   //V[i] in s6
+ 130:	000aab03          	lw	s6,0(s5)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:158
+ mv a0,s6
+ 134:	000b0513          	mv	a0,s6
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:159
+ mv a1,s7
+ 138:	000b8593          	mv	a1,s7
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:160
+ call MUL
+ 13c:	f49ff0ef          	jal	ra,84 <MUL>
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:161
+ add s3,s3,a0
+ 140:	00a989b3          	add	s3,s3,a0
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:162
+ addi s4,s4,1
+ 144:	001a0a13          	addi	s4,s4,1
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:163
+ j DOTFOR
+ 148:	fd1ff06f          	j	118 <DOTFOR>
+
+0000014c <FIN_DOTFOR>:
+FIN_DOTFOR():
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:166
+
+ FIN_DOTFOR:
+ mv a0,s3
+ 14c:	00098513          	mv	a0,s3
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:169
+
+ #epilogue
+	lw s1,0(sp)
+ 150:	00012483          	lw	s1,0(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:170
+ 	lw s2,4(sp)
+ 154:	00412903          	lw	s2,4(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:171
+ 	lw s3,8(sp)
+ 158:	00812983          	lw	s3,8(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:172
+ 	lw s4,12(sp)
+ 15c:	00c12a03          	lw	s4,12(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:173
+ 	lw s5,16(sp)
+ 160:	01012a83          	lw	s5,16(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:174
+ 	lw s6,20(sp)
+ 164:	01412b03          	lw	s6,20(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:175
+ 	lw s7,24(sp)
+ 168:	01812b83          	lw	s7,24(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:176
+ 	lw s8,28(sp)
+ 16c:	01c12c03          	lw	s8,28(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:177
+ 	lw ra,32(sp)
+ 170:	02012083          	lw	ra,32(sp)
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:178
+ 	addi sp,sp,36
+ 174:	02410113          	addi	sp,sp,36
+C:\Universidad\Cuatri2\FC2\FC2labWS\pr3\Debug/../pr3.asm:179
+ 	ret
+ 178:	00008067          	ret
